@@ -1,0 +1,30 @@
+{
+  "name": "BiblioIschio — Veille Chirurgie, IRM & Sport des Ischio-Jambiers",
+  "short_name": "BiblioIschio",
+  "description": "Synthèses cliniques en français, abstracts PubMed, PDFs et Zotero — Pathologie, Chirurgie, Imagerie IRM et Rééducation des Ischio-Jambiers (Cohorte PHAS & Littérature Internationale)",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#faf6ee",
+  "theme_color": "#faf6ee",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

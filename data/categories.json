@@ -1,0 +1,85 @@
+[
+  {
+    "id": "proximal_acute",
+    "label": "Ruptures Proximales Aiguës & Cohorte PHAS",
+    "short_label": "Avulsions Proximales & PHAS",
+    "icon": "zap",
+    "color": "#f97316",
+    "agenda_examples": [
+      "Réinsertion trans-osseuse par ancres des avulsions tubérositaires aiguës (< 32 jours)",
+      "Analyse des 757 patients de la cohorte PHAS (Clinique du Sport Paris)",
+      "Retour au sport chez le sportif professionnel et résultats à long terme (≥ 8 ans)"
+    ]
+  },
+  {
+    "id": "chronic_revision_allograft",
+    "label": "Ruptures Chroniques, Révisions & Greffes (Allogreffes)",
+    "short_label": "Chroniques, Allogreffes & Révisions",
+    "icon": "shield",
+    "color": "#8b5cf6",
+    "agenda_examples": [
+      "Reconstruction par allogreffe structurelle (tendon quadricipital / Achille) des ruptures rétractées",
+      "Reprises chirurgicales (révisions) après re-rupture proximale",
+      "Réinsertion anatomique des avulsions isolées du semi-membraneux"
+    ]
+  },
+  {
+    "id": "imaging_bamic_mri",
+    "label": "Imagerie IRM, Signe du Cobra, Tendon Central & BAMIC",
+    "short_label": "IRM, BAMIC & Signe du Cobra",
+    "icon": "eye",
+    "color": "#6366f1",
+    "agenda_examples": [
+      "Signe du Cobra en IRM (surestimation de 21 % de la rétraction du semi-membraneux)",
+      "IRM de première intention vs échographie et suivi IRM de cicatrisation post-opératoire",
+      "Classification BAMIC (British Athletics) et lésions du tendon intramusculaire (type c)"
+    ]
+  },
+  {
+    "id": "pht_endoscopy_sciatic",
+    "label": "Tendinopathie Proximale (PHT), Endoscopie & Nerf Sciatique",
+    "short_label": "Tendinopathie, Endoscopie & Sciatique",
+    "icon": "activity",
+    "color": "#ec4899",
+    "agenda_examples": [
+      "Ténotomie partielle et réinsertion sur ancres des tendinopathies proximales réfractaires (PHT)",
+      "Réparation endoscopique des ruptures proximales et neurolyse du nerf sciatique",
+      "Impact pronostique de l'œdème péri-sciatique en IRM sur le délai de retour au jeu"
+    ]
+  },
+  {
+    "id": "distal_tears_t_junction",
+    "label": "Ruptures Distales & Jonction en T du Biceps Fémoral",
+    "short_label": "Lésions Distales & Jonction T",
+    "icon": "crosshair",
+    "color": "#06b6d4",
+    "agenda_examples": [
+      "Réparation chirurgicale par ancres des avulsions distales du biceps fémoral chez l'athlète",
+      "Suture chirurgicale des lésions aiguës de la jonction musculo-tendineuse distale en T (DMTJ)",
+      "Sémiologie IRM de la jonction en T du biceps fémoral (taux de récidive > 50 % sans chirurgie)"
+    ]
+  },
+  {
+    "id": "scores_rehab_prevention",
+    "label": "Scores PHAS / Hip-RSI, Rééducation Excentrique & RTS",
+    "short_label": "Scores PHAS/RSI, Nordic & RTS",
+    "icon": "flame",
+    "color": "#10b981",
+    "agenda_examples": [
+      "Validation des scores PHAS (36 items), Short-PHAS (12 items) et Hip-RSI psychologique",
+      "Essai randomisé PHARRLAP : rééducation accélérée sans attelle vs protocole classique",
+      "Adaptations sarcomériques après Nordic Hamstring Exercise (NHE) et Consensus de Londres"
+    ]
+  },
+  {
+    "id": "acl_graft_harvest",
+    "label": "Ischio-Jambiers & Plastie du LCA (Prélèvement & Régénération)",
+    "short_label": "Greffe DIDT/DT4 & Régénération",
+    "icon": "target",
+    "color": "#e11d48",
+    "agenda_examples": [
+      "Préservation de l'insertion tibiale distale des ischio-jambiers lors du LCA (maturation accélérée)",
+      "Rétraction anatomique du corps charnu du semi-tendineux en IRM après prélèvement DIDT"
+    ]
+  }
+]

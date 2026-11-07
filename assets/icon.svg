@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Fond Crème / Beige Parchemin style OpenEvidence (identique BiblioOstéo) -->
+    <radialGradient id="bgGrad" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#FFFDF8" />
+      <stop offset="65%" stop-color="#F6EDD9" />
+      <stop offset="100%" stop-color="#EADBC0" />
+    </radialGradient>
+
+    <!-- Or / Ambre Chaud pour l'emblème -->
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E59A18" />
+      <stop offset="50%" stop-color="#C9820E" />
+      <stop offset="100%" stop-color="#9A5E04" />
+    </linearGradient>
+
+    <!-- Encre Expresso profonde -->
+    <linearGradient id="inkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D2418" />
+      <stop offset="100%" stop-color="#1A140D" />
+    </linearGradient>
+
+    <!-- Halo doré subtil au centre (insertion ischiatique / ancre) -->
+    <radialGradient id="ischialGlow" cx="50%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+    </radialGradient>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#5C4012" flood-opacity="0.14" />
+    </filter>
+  </defs>
+
+  <!-- Fond d'icône iOS / App -->
+  <rect width="512" height="512" rx="114" fill="url(#bgGrad)" />
+
+  <!-- Cadre éditorial fin doré style OpenEvidence -->
+  <rect x="26" y="26" width="460" height="460" rx="92" fill="none" stroke="url(#amberGrad)" stroke-width="3.5" stroke-opacity="0.38" />
+
+  <!-- Halo central -->
+  <circle cx="256" cy="240" r="145" fill="url(#ischialGlow)" />
+
+  <!-- Anneau de visée IRM / Imagerie (pointillés géométriques fins) -->
+  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#amberGrad)" stroke-width="3" stroke-dasharray="10 14" opacity="0.55" />
+
+  <g filter="url(#softShadow)">
+    <!-- Anneau externe stylisé (Calligraphie Serif / Géométrique BiblioOstéo) -->
+    <path
+      d="M256 104
+         C344 104, 408 172, 408 256
+         C408 340, 344 408, 256 408
+         C168 408, 104 340, 104 256
+         C104 172, 168 104, 256 104 Z
+         M256 132
+         C196 132, 152 186, 152 256
+         C152 326, 196 380, 256 380
+         C316 380, 360 326, 360 256
+         C360 186, 316 132, 256 132 Z"
+      fill="url(#inkGrad)"
+    />
+
+    <!-- Tubérosité Ischiatique Supérieure (Empreinte osseuse / Footprint) -->
+    <path
+      d="M206 164
+         C206 144, 232 138, 256 152
+         C280 138, 306 144, 306 164
+         C306 184, 286 196, 274 204
+         C262 200, 250 200, 238 204
+         C226 196, 206 184, 206 164 Z"
+      fill="url(#amberGrad)"
+    />
+
+    <!-- Les 3 Tendons Ischio-Jambiers (Semi-Membraneux, Biceps Fémoral, Semi-Tendineux) -->
+    <!-- Chef latéral : Biceps Fémoral -->
+    <path
+      d="M240 206 C220 248, 208 298, 218 352"
+      fill="none"
+      stroke="url(#amberGrad)"
+      stroke-width="14"
+      stroke-linecap="round"
+    />
+    <!-- Chef médial : Semi-Tendineux (Tendon Conjoint) -->
+    <path
+      d="M256 206 C256 254, 256 304, 256 358"
+      fill="none"
+      stroke="url(#inkGrad)"
+      stroke-width="14"
+      stroke-linecap="round"
+    />
+    <!-- Chef antéro-latéral : Semi-Membraneux -->
+    <path
+      d="M272 206 C292 248, 304 298, 294 352"
+      fill="none"
+      stroke="url(#amberGrad)"
+      stroke-width="14"
+      stroke-linecap="round"
+    />
+
+    <!-- Livre Ouvert / Pages de la Biblio croisant les fuseaux musculo-tendineux -->
+    <path
+      d="M174 286
+         C202 272, 232 276, 256 292
+         C280 276, 310 272, 338 286
+         C312 262, 282 260, 256 276
+         C230 260, 200 262, 174 286 Z"
+      fill="#2D2418"
+      opacity="0.92"
+    />
+
+    <!-- Étoile / Ancre de Réinsertion Ischiatique (Point d'ancrage proximal) -->
+    <path
+      d="M256 172
+         Q256 204 288 204
+         Q256 204 256 236
+         Q256 204 224 204
+         Q256 204 256 172 Z"
+      fill="url(#amberGrad)"
+    />
+    <circle cx="256" cy="204" r="7" fill="#FFFDF8" />
+  </g>
+
+  <!-- 4 repères cardinaux subtils -->
+  <line x1="256" y1="68" x2="256" y2="88" stroke="#C9820E" stroke-width="4" stroke-linecap="round" />
+  <line x1="256" y1="424" x2="256" y2="444" stroke="#C9820E" stroke-width="4" stroke-linecap="round" />
+  <line x1="68" y1="256" x2="88" y2="256" stroke="#C9820E" stroke-width="4" stroke-linecap="round" />
+  <line x1="424" y1="256" x2="444" y2="256" stroke="#C9820E" stroke-width="4" stroke-linecap="round" />
+</svg>
