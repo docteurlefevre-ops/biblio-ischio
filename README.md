@@ -2,6 +2,8 @@
 
 # BiblioIschio — Veille Bibliographique & Synthèses Cliniques sur les Ischio-Jambiers (Chirurgie, IRM & Sport)
 
+🌐 **Portail Web GitHub Pages :** **[https://docteurlefevre-ops.github.io/biblio-ischio/](https://docteurlefevre-ops.github.io/biblio-ischio/)**
+
 Portail de veille bibliographique, de résumés cliniques structurés en français (avec abstracts originaux PubMed), de stockage de PDF intégraux Open-Access et de synchronisation automatique vers **Zotero**, calqué sur le design et l'architecture de **[`Mrthomaslef/biblioosteo`](https://github.com/Mrthomaslef/biblioosteo)** et dédié à la pathologie des **ischio-jambiers** (Cohorte **PHAS** — *Parisian Hamstring Avulsion Score*, Clinique du Sport Paris, et littérature internationale de référence 2017–2026).
 
 ---

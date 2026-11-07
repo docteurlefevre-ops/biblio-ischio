@@ -36,7 +36,7 @@ ZOTERO_API_BASE = "https://api.zotero.org"
 COLLECTION_NAME = "BiblioIschio — Ischio-Jambiers (Chirurgie, IRM & Sport)"
 
 
-def generate_static_exports(articles: list, github_pages_url: str = "https://mrthomaslef.github.io/biblio-ischio"):
+def generate_static_exports(articles: list, github_pages_url: str = "https://docteurlefevre-ops.github.io/biblio-ischio"):
     """Generate .ris, .bib, and CSL-JSON files for 1-click Zotero import."""
     EXPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -338,7 +338,7 @@ def upload_pdf_attachment(user_id: int, api_key: str, parent_key: str, pdf_path:
         return False, str(e)
 
 
-def sync_to_zotero(api_key: str, github_pages_url: str = "https://mrthomaslef.github.io/biblio-ischio"):
+def sync_to_zotero(api_key: str, github_pages_url: str = "https://docteurlefevre-ops.github.io/biblio-ischio"):
     articles = json.loads(ARTICLES_JSON.read_text(encoding="utf-8"))
     user_info = get_user_info(api_key)
     user_id = user_info["userID"]
