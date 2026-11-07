@@ -643,6 +643,147 @@
     @keyframes ptrSpin {
       to { transform: rotate(360deg); }
     }
+
+    /* Styles de la Modale Revue de Littérature (32 articles) */
+    .review-sheet {
+      max-width: 880px;
+      max-height: 91vh;
+    }
+    .review-nav {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding: 0.55rem 1.1rem;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: thin;
+    }
+    .review-nav a {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .review-nav a:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+    .review-content {
+      padding: 1.15rem 1.25rem 2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .review-content h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--accent-soft);
+      padding-bottom: 0.3rem;
+      margin-top: 0.35rem;
+    }
+    .review-content h5 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      margin-top: 0.25rem;
+    }
+    .review-callout {
+      background: var(--bg-callout);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .review-callout strong {
+      color: var(--text-main);
+    }
+    .review-list {
+      padding-left: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .review-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-page);
+    }
+    .review-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.79rem;
+      text-align: left;
+    }
+    .review-table th {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      font-weight: 700;
+      padding: 0.55rem 0.65rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .review-table td {
+      padding: 0.5rem 0.65rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .review-table tr:last-child td {
+      border-bottom: none;
+    }
+    .pmid-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.1rem 0.42rem;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .pmid-chip:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    .algo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.6rem;
+    }
+    .algo-step {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.75rem;
+      font-size: 0.8rem;
+    }
+    .algo-step strong {
+      display: block;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+      font-size: 0.83rem;
+    }
   </style>
 </head>
 <body>
@@ -664,10 +805,13 @@
       </div>
 
       <div class="header-actions">
+        <button class="icon-btn icon-btn-accent" onclick="openReviewModal()" title="Lire la Revue de la Littérature sur les 32 articles">
+          📖 Revue
+        </button>
         <button class="icon-btn" onclick="openPubmedModal()" title="Chercher sur PubMed">
           🔍 PubMed
         </button>
-        <button class="icon-btn icon-btn-accent" onclick="openZoteroModal()">
+        <button class="icon-btn" onclick="openZoteroModal()">
           📚 Zotero
         </button>
         <button class="icon-btn" onclick="toggleDarkMode()" id="themeBtn" aria-label="Mode sombre">
@@ -705,9 +849,14 @@
   <main class="main">
     <div class="count-bar">
       <span id="resultsCount">32 résumés disponibles</span>
-      <a href="exports/biblioischio_zotero.ris" download="BiblioIschio_Zotero.ris" style="color: var(--accent-text); font-weight: 600; text-decoration: none;">
-        ⬇️ Export .RIS
-      </a>
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <button onclick="openReviewModal()" style="background: none; border: none; color: var(--accent-text); font-weight: 700; font-size: 0.78rem; cursor: pointer; text-decoration: underline;">
+          📖 Revue de Littérature (32 articles)
+        </button>
+        <a href="exports/biblioischio_zotero.ris" download="BiblioIschio_Zotero.ris" style="color: var(--accent-text); font-weight: 600; text-decoration: none;">
+          ⬇️ Export .RIS
+        </a>
+      </div>
     </div>
 
     <div class="cards-list" id="articlesList"></div>
@@ -776,6 +925,208 @@
           </button>
         </div>
         <div id="pubmedResults" style="display: flex; flex-direction: column; gap: 0.65rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feuille Modale Revue de Littérature (32 articles) -->
+  <div class="modal-backdrop" id="reviewModal" onclick="if(event.target===this) closeReviewModal()">
+    <div class="modal-sheet review-sheet">
+      <div class="modal-header">
+        <h3>📖 Revue de la Littérature — Ischio-Jambiers (32 articles • 2017–2026)</h3>
+        <div style="display: flex; gap: 0.4rem;">
+          <button class="icon-btn icon-btn-accent" onclick="printReview()" title="Imprimer ou exporter en PDF">
+            🖨️ PDF / Imprimer
+          </button>
+          <button class="icon-btn" onclick="closeReviewModal()">Fermer</button>
+        </div>
+      </div>
+
+      <!-- Sommaire cliquable -->
+      <nav class="review-nav">
+        <a href="#rev-synthese">⭐ Points clés</a>
+        <a href="#rev-algo">🧭 Algorithme</a>
+        <a href="#rev-irm">1. IRM &amp; BAMIC (6)</a>
+        <a href="#rev-phas">2. Avulsions &amp; PHAS (7)</a>
+        <a href="#rev-chronique">3. Chroniques &amp; Allogreffes (4)</a>
+        <a href="#rev-pht">4. PHT &amp; Endoscopie (4)</a>
+        <a href="#rev-distal">5. Distales &amp; Jonction T (3)</a>
+        <a href="#rev-scores">6. Scores &amp; Rééduc (6)</a>
+        <a href="#rev-lca">7. Greffe DIDT &amp; LCA (2)</a>
+      </nav>
+
+      <div class="review-content" id="reviewContentBody">
+        <div class="review-callout" id="rev-synthese">
+          <strong>📌 Messages Clés Transversaux (32 études • &gt; 4 200 patients analysés)</strong>
+          <ul class="review-list">
+            <li><strong>Urgence diagnostique (IRM 1re intention) :</strong> Prescrire une IRM d'emblée plutôt qu'une échographie réduit de <strong>10 jours</strong> le délai opératoire médian (20 j vs 30 j) et améliore significativement les scores sportifs Tegner et UCLA à long terme <button class="pmid-chip" onclick="jumpToArticle('38769849')">PMID 38769849</button>.</li>
+            <li><strong>Seuil critique de chronicité à 32 jours :</strong> Au-delà de <strong>32 jours</strong> entre l'accident et la chirurgie, le risque de re-rupture est multiplié par <strong>2,5</strong> (<code>HR = 2,50</code>, <em>p</em> = 0,01) <button class="pmid-chip" onclick="jumpToArticle('38482843')">PMID 38482843</button>. Sur 1 720 patients en méta-analyse, opérer avant 4 à 6 semaines réduit de <strong>74 %</strong> les sciatalgies post-opératoires (<code>RR = 0,26</code>) et de <strong>49 %</strong> les re-ruptures (<code>RR = 0,51</code>) <button class="pmid-chip" onclick="jumpToArticle('42358117')">PMID 42358117</button>.</li>
+            <li><strong>Supériorité démontrée de la chirurgie :</strong> En analyse appariée par score de propension à &gt; 4 ans, la chirurgie multiplie par <strong>6</strong> (<code>OR = 6,04</code>) la probabilité de reprendre le sport au niveau antérieur (67,7 % vs 26,7 %) avec <strong>89,5 %</strong> de satisfaction contre <strong>25 %</strong> sans chirurgie <button class="pmid-chip" onclick="jumpToArticle('39165177')">PMID 39165177</button>.</li>
+            <li><strong>Sémiologie IRM (« Signe du Cobra ») :</strong> Spécificité de <strong>83,3 %</strong> pour l'avulsion isolée du semi-membraneux et surestimation radiologique moyenne de <strong>21 % (2,0 cm)</strong> de la rétraction réelle (10,05 cm en IRM vs 7,9 cm après déroulement per-opératoire) <button class="pmid-chip" onclick="jumpToArticle('39171445')">PMID 39171445</button>.</li>
+          </ul>
+        </div>
+
+        <h4 id="rev-algo">🧭 Algorithme Décisionnel Clinique &amp; Chirurgical</h4>
+        <div class="algo-grid">
+          <div class="algo-step">
+            <strong>1. Imagerie Initiale (&lt; 7–10 j)</strong>
+            IRM Bassin/Cuisse de 1re intention devant toute suspicion d'avulsion ou lésion sévère (bannir l'échographie isolée). Cartographie : tendons atteints, rétraction, Signe du Cobra, classification BAMIC (a/b/c) et contact œdémateux avec le nerf sciatique.
+          </div>
+          <div class="algo-step">
+            <strong>2. Avulsion Proximale Aiguë (&lt; 32 j)</strong>
+            Avulsion complète (3 tendons) ou partielle rétractée &gt; 2 cm ou semi-membraneux isolé chez le sportif : réinsertion anatomique trans-osseuse par ancres avant J32 (divise par 2,5 le risque de re-rupture et par 4 les sciatalgies).
+          </div>
+          <div class="algo-step">
+            <strong>3. Lésion Chronique / PHT / Distale</strong>
+            • Chronique rétractée irréparable : Allogreffe structurelle (tendon quadricipital).<br/>
+            • PHT réfractaire &gt; 6 mois : Ténotomie partielle + réinsertion sur ancres ou endoscopie.<br/>
+            • Avulsion distale BF ou Jonction en T chez l'athlète : Suture/ancres précoces (0 % récidive vs 54 %).
+          </div>
+          <div class="algo-step">
+            <strong>4. Rééducation &amp; Validation RTS</strong>
+            Appui selon tolérance sans attelle rigide possible (essai PHARRLAP). Renforcement excentrique (Nordic +49 % sarcomères en série). Critères RTS : <code>Hip-RSI ≥ 51,7</code> (M4), <code>Short-PHAS ≥ 47/65</code> (M8), <code>PHAS ≥ 86/100</code> (M9) + sprint maximal indolore.
+          </div>
+        </div>
+
+        <h4 id="rev-irm">1. Parcours Diagnostique, Sémiologie IRM et Classifications (6 études)</h4>
+        <ul class="review-list">
+          <li><strong>IRM en première intention vs Échographie (Lefèvre et al., <em>KSSTA</em> 2024 — 392 patients) :</strong> L'IRM initiale raccourcit de <strong>10 jours</strong> le délai médian jusqu'à la chirurgie (<strong>20,0 j</strong> vs <strong>30,0 j</strong>) et procure des scores d'activité Tegner (médiane 5 vs 4) et UCLA significativement supérieurs à 4–5 ans <button class="pmid-chip" onclick="jumpToArticle('38769849')">PMID 38769849</button>.</li>
+          <li><strong>Le « Signe du Cobra » en IRM (Lefèvre et al., <em>KSSTA</em> 2025 — 81 patients) :</strong> Bande hypo-T2 ondulée dont l'extrémité libre se replie distalement en tête de cobra. Spécifique à <strong>83,3 %</strong> (<code>LR+ = 3,0</code>) de l'avulsion isolée du semi-membraneux, il entraîne une surestimation IRM moyenne de <strong>21 % (2,0 cm)</strong> de la rétraction (10,05 ± 3,0 cm en IRM vs 7,9 ± 2,5 cm réels en chirurgie), évitant de récuser à tort une réinsertion directe <button class="pmid-chip" onclick="jumpToArticle('39171445')">PMID 39171445</button>.</li>
+          <li><strong>Cinétique IRM 3T de la cicatrisation post-opératoire (Mechó, Lempainen et al., <em>Skeletal Radiol</em> 2026 — 43 IRM chez 20 footballeurs pros) :</strong> Durant les 4 premiers mois post-opératoires, les fentes intra-tendineuses longitudinales (73,3 %) et transversales (86,7 %) et l'œdème de dénervation (66,7 %) sont habituels ; ~40 % des tendons guéris gardent une fente résiduelle au sein d'un cal mature sans retarder le retour au jeu <button class="pmid-chip" onclick="jumpToArticle('42963497')">PMID 42963497</button>.</li>
+          <li><strong>Sémiologie IRM standardisée (Weber et al., <em>Skeletal Radiol</em> 2026) :</strong> Distingue les lésions de sprint haute vitesse (chef long du biceps fémoral) des lésions par étirement forcé (semi-membraneux proximal) <button class="pmid-chip" onclick="jumpToArticle('42530617')">PMID 42530617</button>.</li>
+          <li><strong>Consensus de Londres Partie 1 (Paton, Haddad et al., <em>BJSM</em> 2023) &amp; BAMIC classe <em>c</em> (Giakoumis, Pollock et al., <em>Scand J Med Sci Sports</em> 2025) :</strong> La classification BAMIC est utilisée par <strong>58 %</strong> des experts mondiaux <button class="pmid-chip" onclick="jumpToArticle('36650035')">PMID 36650035</button>. Les lésions du tendon intramusculaire (BAMIC <em>c</em>) provoquent une douleur plus élevée à la marche et un retour à l'entraînement nettement prolongé (évalué par le test MHFAKE et le H-test d'Askling, alors que la douleur à la palpation <em>p</em> = 0,69 n'est pas prédictive) <button class="pmid-chip" onclick="jumpToArticle('40985316')">PMID 40985316</button>.</li>
+        </ul>
+
+        <h4 id="rev-phas">2. Ruptures Proximales Aiguës &amp; Résultats de la Cohorte PHAS (7 études)</h4>
+        <div class="review-table-wrap">
+          <table class="review-table">
+            <thead>
+              <tr>
+                <th>Étude &amp; Année</th>
+                <th>PMID</th>
+                <th>Population</th>
+                <th>Résultats Cliniques &amp; Statistiques Clés</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lefèvre et al.</strong> (<em>OJSM</em> 2026)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('41918719')">41918719</button></td>
+                <td>757 opérés (PHAS)</td>
+                <td>Complications globales <strong>10,4 %</strong> (5,6 % re-ruptures, 4,7 % autres) ; 75 % &lt; 5,5 mois ; FdR : accident du travail (<code>OR = 5,59</code>) et SM isolé (<code>OR = 12,1</code>). Gêne assise : 5 %.</td>
+              </tr>
+              <tr>
+                <td><strong>Lefèvre et al.</strong> (<em>OJSM</em> 2026)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('41685043')">41685043</button></td>
+                <td>139 opérés (≥ 8 ans, moy. 10,3 ans)</td>
+                <td><strong>PHAS = 87,5 ± 14,9</strong> à &gt; 10 ans ; UCLA de 3,1 à <strong>7,5</strong> ; amélioration continue jusqu'à 8 ans ; chirurgie chronique (&gt; 4 sem.) : <strong>OR ~6</strong> de mauvais PHAS.</td>
+              </tr>
+              <tr>
+                <td><strong>Akhtar et al.</strong> (<em>AJSM</em> 2026)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('42358117')">42358117</button></td>
+                <td>Méta-analyse (1 720 patients)</td>
+                <td>Réparation précoce (≤ 4–6 sem.) : réduction de <strong>74 % des sciatalgies</strong> (<code>RR = 0,26</code>) et de <strong>49 % des re-ruptures</strong> (<code>RR = 0,51</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>Lefèvre et al.</strong> (<em>KSSTA</em> 2025)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('39844676')">39844676</button></td>
+                <td>298 appariés (&lt; 50 vs &gt; 50 ans)</td>
+                <td>Gain fonctionnel majeur avant (41,8 ans) et après 50 ans (58,0 ans) ; taux de complications et de retour au sport <strong>identiques</strong> (<em>p</em> &gt; 0,05).</td>
+              </tr>
+              <tr>
+                <td><strong>Lefèvre et al.</strong> (<em>AJSM</em> 2024)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('39165177')">39165177</button></td>
+                <td>127 appariés (95 opérés vs 32 non opérés)</td>
+                <td>À &gt; 4 ans : <strong>PHAS 86,3 vs 69,8</strong> ; RTS même niveau <strong>67,7 % vs 26,7 % (<code>OR = 6,04</code>)</strong> ; satisfaction <strong>89,5 % vs 25 %</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Lefèvre et al.</strong> (<em>AJSM</em> 2024)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('38482843')">38482843</button></td>
+                <td>740 opérés (PHAS)</td>
+                <td>Taux de re-rupture <strong>4,59 %</strong> (médiane 88,5 j, 74 % atraumatiques) ; <strong>seuil ROC optimal = 32 jours (<code>HR = 2,50</code>)</strong> ; avulsion complète (<code>HR = 4,33</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>Lefèvre et al.</strong> (<em>AJSM</em> 2024)</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('38353018')">38353018</button></td>
+                <td>64 athlètes professionnels</td>
+                <td><strong>98,4 % de RTS</strong>, dont <strong>78,1 % au niveau pro antérieur à 6,2 ± 2,5 mois</strong> (football 95,2 %, handball/escrime 100 %).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 id="rev-chronique">3. Ruptures Chroniques, Révisions &amp; Reconstructions par Allogreffe (4 études)</h4>
+        <ul class="review-list">
+          <li><strong>Allogreffe structurelle dans les avulsions chroniques (Lefèvre et al., <em>Arthroscopy</em> 2026 — 42 patients, recul 3,4 ans) :</strong> Lorsque la réinsertion directe est impossible, la reconstruction par allogreffe fait progresser le score PHAS médian de <strong>56,3 à 84,5</strong>, avec <strong>56,4 %</strong> des patients franchissant le seuil PASS (&gt; 82,3) <button class="pmid-chip" onclick="jumpToArticle('42702351')">PMID 42702351</button>.</li>
+          <li><strong>Chirurgie de révision vs réparation primaire (Lefèvre et al., <em>AJSM</em> 2025 — 32 révisions appariées à 128 primaires) :</strong> En révision, le recours à une allogreffe est 4 fois plus fréquent (<strong>37,5 % vs 9,4 %</strong>). Le score PHAS médian atteint 85,0 (vs 91,5 en primaire), mais le risque de nouvelle re-rupture est multiplié par 8 (<strong>31,3 % vs 3,9 %</strong>, <code>HR = 8,19</code>) <button class="pmid-chip" onclick="jumpToArticle('40815844')">PMID 40815844</button>.</li>
+          <li><strong>Notes techniques chirurgicales (Lefèvre et al., <em>Arthrosc Tech</em> 2025) :</strong> Reconstruction des rétractions chroniques par <strong>allogreffe fraîche congelée de tendon quadricipital</strong> enveloppant en éventail le moignon distal sans imposer de flexion forcée du genou <button class="pmid-chip" onclick="jumpToArticle('41132280')">PMID 41132280</button>, et réinsertion anatomique sur la facette antéro-latérale des avulsions isolées du <strong>semi-membraneux</strong> après déroulement du Signe du Cobra <button class="pmid-chip" onclick="jumpToArticle('41220667')">PMID 41220667</button>.</li>
+        </ul>
+
+        <h4 id="rev-pht">4. Tendinopathie Proximale (PHT), Endoscopie &amp; Nerf Sciatique (4 études)</h4>
+        <ul class="review-list">
+          <li><strong>Ténotomie partielle et réinsertion pour PHT chronique (Lefèvre et al., <em>AJSM</em> 2026 — 42 patients, recul 4,1 ans) :</strong> Après échec de &gt; 6 mois de traitement conservateur, la ténotomie partielle avec réinsertion sur ancres fait progresser le score PHAS moyen de <strong>63,0 ± 11,4 à 84,2 ± 18,2</strong> (<em>p</em> &lt; 0,001) <button class="pmid-chip" onclick="jumpToArticle('42281221')">PMID 42281221</button>.</li>
+          <li><strong>Réparation endoscopique à &gt; 6 ans de recul (Greenwood et al., <em>Arthroscopy</em> 2026 — suivi moyen 7,6 ans) :</strong> Maintien durable des résultats (HOS-Sports <strong>89,2/100</strong>, EVA douleur 1,7/10, satisfaction <strong>86,4 %</strong>, PASS <strong>85,7 %</strong>) pour les lésions partielles ou peu rétractées <button class="pmid-chip" onclick="jumpToArticle('42144919')">PMID 42144919</button>.</li>
+          <li><strong>Œdème péri-sciatique en IRM (Lee et al., <em>BJSM</em> 2026 — 96 lésions NCAA) :</strong> Un contact œdémateux avec le nerf sciatique existe dans <strong>78,1 %</strong> des cas (dont <strong>41,7 %</strong> d'engainement circonférentiel complet) et allonge significativement l'indisponibilité sportive <button class="pmid-chip" onclick="jumpToArticle('42785966')">PMID 42785966</button>.</li>
+          <li><strong>Consensus de Londres Partie 2 (Plastow, Haddad et al., <em>BJSM</em> 2023) :</strong> Consensus chirurgical formel devant tout <em>gapping</em> avec perte de tension (<strong>87,2 %</strong>), avulsion osseuse déplacée (<strong>72,8 %</strong>) ou rupture du tendon libre proximal invalidante (<strong>72,2 %</strong>), et rejet des infiltrations de corticoïdes en aigu <button class="pmid-chip" onclick="jumpToArticle('36650033')">PMID 36650033</button>.</li>
+        </ul>
+
+        <h4 id="rev-distal">5. Ruptures Distales &amp; Jonction en T (DMTJ) du Biceps Fémoral (3 études)</h4>
+        <ul class="review-list">
+          <li><strong>Sémiologie IRM et pronostic de la jonction en T du biceps fémoral (Entwisle, Connell et al., <em>OJSM</em> 2017 — 106 IRM) :</strong> L'atteinte de la jonction musculo-tendineuse distale en T (DMTJ, double innervation tibiale et fibulaire) récidive dans <strong>54 % des cas</strong> sous traitement conservateur (dont 76 % en &lt; 3 mois) <button class="pmid-chip" onclick="jumpToArticle('28795071')">PMID 28795071</button>.</li>
+          <li><strong>Réparation chirurgicale de la jonction en T (Kayani, Haddad et al., <em>AJSM</em> 2020 — 34 athlètes pros) :</strong> La suture anatomique en aigu permet <strong>100 % de retour au niveau pro en 11,7 ± 3,6 semaines</strong> et ramène le taux de récidive à <strong>0 %</strong> à 28 mois <button class="pmid-chip" onclick="jumpToArticle('32736504')">PMID 32736504</button>.</li>
+          <li><strong>Avulsions distales du biceps fémoral (Thompson, Haddad et al., <em>OJSM</em> 2021 — 22 athlètes pros) :</strong> Réinsertion précoce (J12) par ancres sur la tête fibulaire avec protection du nerf fibulaire commun : <strong>100 % de retour au niveau antérieur en 16,7 ± 8,7 semaines</strong> et <strong>0 % de récidive</strong> à 2 ans <button class="pmid-chip" onclick="jumpToArticle('33855098')">PMID 33855098</button>.</li>
+        </ul>
+
+        <h4 id="rev-scores">6. Scores PHAS / Short-PHAS / Hip-RSI, Rééducation &amp; Prévention (6 études)</h4>
+        <div class="review-table-wrap">
+          <table class="review-table">
+            <thead>
+              <tr>
+                <th>Outil / Protocole</th>
+                <th>PMID</th>
+                <th>Validation &amp; Seuils Décisionnels en Pratique Clinique</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PHAS (36 items / 100)</strong><br/><em>AJSM</em> 2024</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('38353118')">38353118</button></td>
+                <td>Validé sur 156 patients (ICC = 0,96 ; α = 0,86 ; aucun effet plafond). <strong>Seuil à 9 mois : PHAS ≥ 86/100</strong> prédit le RTS à 1 an (spécificité <strong>81,4 %</strong>).</td>
+              </tr>
+              <tr>
+                <td><strong>Short-PHAS (12 items / 65)</strong><br/><em>OJSM</em> 2026</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('42169801')">42169801</button></td>
+                <td>Validé sur 335 patients (corrélation <strong>r = 0,94</strong> avec le PHAS long ; α = 0,85). Seuils à 8 mois : <strong>39/65</strong> (RTS global), <strong>46/65</strong> (même sport), <strong>47/65</strong> (niveau antérieur, AUC = 0,75).</td>
+              </tr>
+              <tr>
+                <td><strong>Hip-RSI (Psychologique)</strong><br/><em>OJSM</em> 2025</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('41306750')">41306750</button></td>
+                <td>Validé sur 84 patients (ICC = 0,89 ; r = 0,55 avec PHAS). <strong>Seuil à 4 mois : Hip-RSI ≥ 51,7/100</strong> prédit le retour au sport antérieur à 9 mois (spécificité <strong>77 %</strong>, AUC = 0,76).</td>
+              </tr>
+              <tr>
+                <td><strong>Essai RCT PHARRLAP</strong><br/><em>AJSM</em> 2026</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('42324766')">42324766</button></td>
+                <td>Niveau I (57 patients, suivi 2 ans) : la rééducation accélérée <strong>sans attelle avec appui immédiat toléré</strong> réduit la douleur à 3 et 12 mois avec une force isocinétique et un taux de re-rupture identiques au protocole avec attelle 6 semaines.</td>
+              </tr>
+              <tr>
+                <td><strong>Nordic Hamstring &amp; Sarcomères</strong><br/><em>J Sport Health Sci</em> 2025</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('39461588')">39461588</button></td>
+                <td>Preuve in vivo humaine (micro-endoscopie) : 9 sem. de Nordic Hamstring = <strong>+40 % de force</strong>, <strong>+33 % de longueur fasciculaire</strong> et <strong>+49 % de sarcomères en série</strong> dans le BFlh distal (mais réversion de -16 % après 3 sem. d'arrêt).</td>
+              </tr>
+              <tr>
+                <td><strong>Consensus Londres (Partie 3)</strong><br/><em>BJSM</em> 2023</td>
+                <td><button class="pmid-chip" onclick="jumpToArticle('36650032')">36650032</button></td>
+                <td>Intégration de la chaîne cinétique lombo-pelvienne (<strong>95 %</strong>) et exigence d'un <strong>sprint maximal indolore (85,5 %)</strong> avant retour à la compétition.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 id="rev-lca">7. Ischio-Jambiers &amp; Plastie du LCA : Prélèvement DIDT &amp; Régénération (2 études)</h4>
+        <ul class="review-list">
+          <li><strong>Rétraction anatomique du semi-tendineux après prélèvement DIDT (Speedtsberg, Hölmich et al., <em>KSSTA</em> 2022) :</strong> À 6,8 ans post-LCA, l'IRM bilatérale comparative objective un raccourcissement définitif moyen de <strong>81 mm (-25 %)</strong> du corps charnu du semi-tendineux par rapport au côté sain (variation naturelle &lt; 10 mm), expliquant le déficit de flexion profonde (&gt; 70–90°) <button class="pmid-chip" onclick="jumpToArticle('34471958')">PMID 34471958</button>.</li>
+          <li><strong>Essai randomisé sur la préservation de l'insertion tibiale (Sinha et al., <em>AJSM</em> 2026 — Niveau I, 56 patients) :</strong> Laisser les tendons ischio-jambiers pédiculés sur la patte d'oie lors de la plastie du LCA supprime l'œdème de gonflement du greffon et permet une maturation IRM complète (score de Figueroa 5/5) chez <strong>100 % des patients à 9 mois</strong> contre <strong>10 %</strong> en greffe libre <button class="pmid-chip" onclick="jumpToArticle('42310826')">PMID 42310826</button>.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1213,6 +1564,50 @@
     }
     function closePubmedModal() {
       document.getElementById('pubmedModal').classList.remove('open');
+    }
+
+    /* Revue de Littérature (32 articles) */
+    function openReviewModal() {
+      document.getElementById('reviewModal').classList.add('open');
+    }
+    function closeReviewModal() {
+      document.getElementById('reviewModal').classList.remove('open');
+    }
+    function jumpToArticle(pmid) {
+      closeReviewModal();
+      currentCategory = 'all';
+      renderPills();
+      const input = document.getElementById('searchInput');
+      input.value = String(pmid);
+      document.getElementById('clearSearchBtn').style.display = 'block';
+      renderList();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function printReview() {
+      const content = document.getElementById('reviewContentBody').innerHTML;
+      const win = window.open('', '_blank');
+      if (!win) {
+        window.print();
+        return;
+      }
+      win.document.write(`<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Revue de la Littérature — Ischio-Jambiers (32 articles)</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; color: #292218; line-height: 1.55; max-width: 820px; margin: 2rem auto; padding: 0 1.2rem; font-size: 13.5px; }
+          h1 { font-size: 20px; border-bottom: 2px solid #c98a14; padding-bottom: 8px; margin-bottom: 14px; }
+          h4 { font-size: 15.5px; color: #694400; border-bottom: 1px solid #e5dac3; padding-bottom: 4px; margin-top: 20px; margin-bottom: 8px; }
+          .review-callout { background: #fef7e0; border-left: 4px solid #c98a14; padding: 12px 14px; border-radius: 6px; margin-bottom: 16px; }
+          .algo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+          .algo-step { border: 1px solid #e5dac3; border-top: 3px solid #c98a14; padding: 8px 10px; border-radius: 6px; background: #faf6ee; }
+          table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+          th, td { border: 1px solid #e5dac3; padding: 6px 8px; text-align: left; vertical-align: top; }
+          th { background: #f3ecdc; }
+          .pmid-chip { border: 1px solid #c98a14; background: #f9eac3; color: #694400; font-weight: bold; font-size: 11px; padding: 1px 5px; border-radius: 4px; }
+        </style></head><body>
+        <h1>BiblioIschio — Revue de la Littérature Scientifique sur les Ischio-Jambiers (32 articles • 2017–2026)</h1>
+        ${content}
+        <script>window.onload = () => { window.print(); };<\/script>
+      </body></html>`);
+      win.document.close();
     }
 
     async function searchPubmedLive() {
